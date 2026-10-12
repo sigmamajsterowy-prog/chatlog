@@ -1,0 +1,28 @@
+name: build
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Uloz pliki w foldery
+        run: |
+          mkdir -p src/main/java/pl/chatlog src/main/resources/assets/chatlog/lang
+          mv -n *.java src/main/java/pl/chatlog/ || true
+          mv -n en_us.json src/main/resources/assets/chatlog/lang/ || true
+          mv -n pl_pl.json src/main/resources/assets/chatlog/lang/ || true
+          mv -n fabric.mod.json src/main/resources/ || true
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.12
+      - run: gradle build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chatlog-jar
+          path: build/libs/*.jar
