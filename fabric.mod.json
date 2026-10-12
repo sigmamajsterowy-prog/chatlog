@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "chatlog",
+  "version": "${version}",
+  "name": "ChatLog",
+  "description": "Historia czatu, obserwowanie graczy, dźwięk i okienko w rogu.",
+  "environment": "client",
+  "entrypoints": { "client": ["pl.chatlog.ChatLogMod"] },
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~1.21.4",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
