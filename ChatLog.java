@@ -136,6 +136,6 @@ public final class ChatLog {
 
     public static void beep() {
         MinecraftClient mc = MinecraftClient.getInstance();
-        mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.BLOCK_NOTE_BLOCK_PLING, 1.7f, 1.0f));
+        mc.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.BLOCK_NOTE_BLOCK_PLING.value(), 1.7f, 1.0f));
     }
 }
